@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Components>
+    <DataComponent Type="gada">GameData</DataComponent>
+    <DataComponent Type="text" Locale="enUS">GameText</DataComponent>
+    <DataComponent Type="info">DocumentInfo</DataComponent>
+    <DataComponent Type="font">UI/FontStyles.StormStyle</DataComponent>
+    <DataComponent Type="uiui">UI/Layout/DescIndex.StormLayout</DataComponent>
+    <DataComponent Type="uiui">UI/Layout/SpazzoTemplates.StormLayout</DataComponent>
+    <DataComponent Type="uiui">UI/Layout/CustomPanelSpazzo.StormLayout</DataComponent>
+</Components>

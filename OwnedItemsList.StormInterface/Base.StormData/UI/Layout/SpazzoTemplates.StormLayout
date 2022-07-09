@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+
+  <Frame type="Button" name="ButtonNewNoBottomNoTopLabelAnchorTemplate">
+    <ClickSound val="@UI_BNet_Generic_01" />
+    <DisplayType val="ImageLayer" />
+    <CollapseLayout val="True" />
+    <Animation name="Click">
+      <Event event="OnMouseDown" action="Restart,Play" />
+    </Animation>
+    <Frame type="Image" name="NormalImage">
+      <Anchor side="Top" relative="$parent" pos="Min" offset="0" />
+      <Anchor side="Left" relative="$parent" pos="Min" offset="0" />
+      <Anchor side="Right" relative="$parent" pos="Max" offset="0" />
+      <Anchor side="Bottom" relative="$parent" pos="Max" offset="0" />
+      <LayerCount val="4" />
+      <Texture val="@UI/Spazzo/PulldownMenu" layer="0" />
+      <Texture val="@UI/Spazzo/PulldownMenuPress" layer="1" />
+      <Texture val="@UI/Spazzo/PulldownMenuPress" layer="2" />
+      <Texture val="@UI/Spazzo/PulldownMenuHover" layer="3" />
+      <TextureType val="Nineslice" layer="0" />
+      <TextureType val="Nineslice" layer="1" />
+      <TextureType val="Nineslice" layer="2" />
+      <TextureType val="Nineslice" layer="3" />
+      <Tiled val="true" />
+      <StateCount val="1" />
+      <DesaturateOnDisable val="false" />
+    </Frame>
+    <Frame type="Image" name="HoverImage">
+      <Anchor side="Top" relative="$parent" pos="Min" offset="0" />
+      <Anchor side="Left" relative="$parent" pos="Min" offset="0" />
+      <Anchor side="Right" relative="$parent" pos="Max" offset="0" />
+      <Anchor side="Bottom" relative="$parent" pos="Max" offset="0" />
+      <LayerCount val="4" />
+      <Texture val="@UI/Spazzo/PulldownMenuHover" layer="0" />
+      <Texture val="@UI/Spazzo/PulldownMenuPress" layer="1" />
+      <Texture val="@UI/Spazzo/PulldownMenuPress" layer="2" />
+      <Texture val="@UI/Spazzo/PulldownMenu" layer="3" />
+      <TextureType val="Nineslice" layer="0" />
+      <TextureType val="Nineslice" layer="1" />
+      <TextureType val="Nineslice" layer="2" />
+      <TextureType val="Nineslice" layer="3" />
+      <Tiled val="true" />
+      <StateCount val="1" />
+      <DesaturateOnDisable val="false" />
+    </Frame>
+    <Frame type="Label" name="Label">
+      <Anchor side="Left" relative="$parent" pos="Min" offset="4" />
+      <Anchor side="Right" relative="$parent" pos="Max" offset="0" />
+      <Style val="CustomPulldownLabel" />
+    </Frame>
+    <Frame type="Frame" name="HitTestFrame">
+      <Anchor side="Top" relative="$parent" pos="Min" offset="0" />
+      <Anchor side="Left" relative="$parent" pos="Min" offset="0" />
+      <Anchor side="Right" relative="$parent" pos="Max" offset="0" />
+      <Anchor side="Bottom" relative="$parent" pos="Max" offset="0" />
+    </Frame>
+  </Frame>
+
+  <Frame type="Button" name="ButtonNewNoBottomLabelAnchorTemplate" template="SpazzoTemplates/ButtonNewNoBottomNoTopLabelAnchorTemplate">
+    <Frame type="Label" name="Label">
+      <Anchor side="Top" relative="$parent" pos="Min" offset="0" />
+    </Frame>
+  </Frame>
+
+  <Frame type="Button" name="ButtonNewTemplate" template="SpazzoTemplates/ButtonNewNoBottomLabelAnchorTemplate">
+    <Frame type="Label" name="Label">
+      <Anchor side="Bottom" relative="$parent" pos="Max" offset="0" />
+    </Frame>
+    <Visible val="False"/>
+  </Frame>
+
+
+</Desc>

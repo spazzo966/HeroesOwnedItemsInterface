@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+  
+  <Constant name="ButtonOffset" val="8" />
+  <Constant name="ButtonHeight" val="35" />
+
+  <Frame type="Frame" name="GameUI/UIContainer/FullscreenUpperContainer" file="GameUI">
+    <Frame type="CopyClipboardButton" name="PlayerClipboard1" template="SpazzoTemplates/ButtonNewTemplate">
+      <Anchor side="Top" relative="$parent" pos="Min" offset="300"/>
+      <Anchor side="Right" relative="$parent" pos="Max" offset="-30"/>
+      <Height val="#ButtonHeight"/>
+      <Width val="120"/>
+      <ClipboardText val="{$this/@Tooltip}"/>
+      <Tooltip val="asdf" />
+      <Frame type="Label" name="Label">
+        <Text val="One"/>
+      </Frame>
+      <Shortcut val="1"/>
+    </Frame>
+    <Frame type="CopyClipboardButton" name="PlayerClipboard2" template="SpazzoTemplates/ButtonNewTemplate">
+      <Anchor side="Top" relative="$sibling-1" pos="Max" offset="#ButtonOffset"/>
+      <Anchor side="Left" relative="$sibling-1" pos="Min" offset="0"/>
+      <Anchor side="Right" relative="$sibling-1" pos="Max" offset="0"/>
+      <Height val="#ButtonHeight"/>
+      <ClipboardText val="{$this/@Tooltip}"/>
+      <Tooltip val="asdf" />
+      <Frame type="Label" name="Label">
+        <Text val="Two"/>
+      </Frame>
+      <Shortcut val="2"/>
+    </Frame>
+    <Frame type="CopyClipboardButton" name="PlayerClipboard3" template="SpazzoTemplates/ButtonNewTemplate">
+      <Anchor side="Top" relative="$sibling-1" pos="Max" offset="#ButtonOffset"/>
+      <Anchor side="Left" relative="$sibling-1" pos="Min" offset="0"/>
+      <Anchor side="Right" relative="$sibling-1" pos="Max" offset="0"/>
+      <Height val="#ButtonHeight"/>
+      <ClipboardText val="{$this/@Tooltip}"/>
+      <Tooltip val="asdf" />
+      <Frame type="Label" name="Label">
+        <Text val="Three"/>
+      </Frame>
+      <Shortcut val="3"/>
+    </Frame>
+    <Frame type="CopyClipboardButton" name="PlayerClipboard4" template="SpazzoTemplates/ButtonNewTemplate">
+      <Anchor side="Top" relative="$sibling-1" pos="Max" offset="#ButtonOffset"/>
+      <Anchor side="Left" relative="$sibling-1" pos="Min" offset="0"/>
+      <Anchor side="Right" relative="$sibling-1" pos="Max" offset="0"/>
+      <Height val="#ButtonHeight"/>
+      <ClipboardText val="{$this/@Tooltip}"/>
+      <Tooltip val="asdf" />
+      <Frame type="Label" name="Label">
+        <Text val="Four"/>
+      </Frame>
+      <Shortcut val="4"/>
+    </Frame>
+    <Frame type="CopyClipboardButton" name="PlayerClipboard5" template="SpazzoTemplates/ButtonNewTemplate">
+      <Anchor side="Top" relative="$sibling-1" pos="Max" offset="#ButtonOffset"/>
+      <Anchor side="Left" relative="$sibling-1" pos="Min" offset="0"/>
+      <Anchor side="Right" relative="$sibling-1" pos="Max" offset="0"/>
+      <Height val="#ButtonHeight"/>
+      <ClipboardText val="{$this/@Tooltip}"/>
+      <Tooltip val="asdf" />
+      <Frame type="Label" name="Label">
+        <Text val="Five"/>
+      </Frame>
+      <Shortcut val="5"/>
+    </Frame>
+    <Frame type="CopyClipboardButton" name="PlayerClipboard6" template="SpazzoTemplates/ButtonNewTemplate">
+      <Anchor side="Top" relative="$sibling-1" pos="Max" offset="#ButtonOffset"/>
+      <Anchor side="Left" relative="$sibling-1" pos="Min" offset="0"/>
+      <Anchor side="Right" relative="$sibling-1" pos="Max" offset="0"/>
+      <Height val="#ButtonHeight"/>
+      <ClipboardText val="{$this/@Tooltip}"/>
+      <Tooltip val="asdf" />
+      <Frame type="Label" name="Label">
+        <Text val="Six"/>
+      </Frame>
+      <Shortcut val="6"/>
+    </Frame>
+    <Frame type="CopyClipboardButton" name="PlayerClipboard7" template="SpazzoTemplates/ButtonNewTemplate">
+      <Anchor side="Top" relative="$sibling-1" pos="Max" offset="#ButtonOffset"/>
+      <Anchor side="Left" relative="$sibling-1" pos="Min" offset="0"/>
+      <Anchor side="Right" relative="$sibling-1" pos="Max" offset="0"/>
+      <Height val="#ButtonHeight"/>
+      <ClipboardText val="{$this/@Tooltip}"/>
+      <Tooltip val="asdf" />
+      <Frame type="Label" name="Label">
+        <Text val="Seven"/>
+      </Frame>
+      <Shortcut val="7"/>
+    </Frame>
+    <Frame type="CopyClipboardButton" name="PlayerClipboard8" template="SpazzoTemplates/ButtonNewTemplate">
+      <Anchor side="Top" relative="$sibling-1" pos="Max" offset="#ButtonOffset"/>
+      <Anchor side="Left" relative="$sibling-1" pos="Min" offset="0"/>
+      <Anchor side="Right" relative="$sibling-1" pos="Max" offset="0"/>
+      <Height val="#ButtonHeight"/>
+      <ClipboardText val="{$this/@Tooltip}"/>
+      <Tooltip val="asdf" />
+      <Frame type="Label" name="Label">
+        <Text val="Eight"/>
+      </Frame>
+      <Shortcut val="8"/>
+    </Frame>
+    <Frame type="CopyClipboardButton" name="PlayerClipboard9" template="SpazzoTemplates/ButtonNewTemplate">
+      <Anchor side="Top" relative="$sibling-1" pos="Max" offset="#ButtonOffset"/>
+      <Anchor side="Left" relative="$sibling-1" pos="Min" offset="0"/>
+      <Anchor side="Right" relative="$sibling-1" pos="Max" offset="0"/>
+      <Height val="#ButtonHeight"/>
+      <ClipboardText val="{$this/@Tooltip}"/>
+      <Tooltip val="asdf" />
+      <Frame type="Label" name="Label">
+        <Text val="Nine"/>
+      </Frame>
+      <Shortcut val="9"/>
+    </Frame>
+    <Frame type="CopyClipboardButton" name="PlayerClipboard10" template="SpazzoTemplates/ButtonNewTemplate">
+      <Anchor side="Top" relative="$sibling-1" pos="Max" offset="#ButtonOffset"/>
+      <Anchor side="Left" relative="$sibling-1" pos="Min" offset="0"/>
+      <Anchor side="Right" relative="$sibling-1" pos="Max" offset="0"/>
+      <Height val="#ButtonHeight"/>
+      <ClipboardText val="{$this/@Tooltip}"/>
+      <Tooltip val="asdf" />
+      <Frame type="Label" name="Label">
+        <Text val="Ten"/>
+      </Frame>
+      <Shortcut val="0"/>
+    </Frame>
+  </Frame>
+</Desc>

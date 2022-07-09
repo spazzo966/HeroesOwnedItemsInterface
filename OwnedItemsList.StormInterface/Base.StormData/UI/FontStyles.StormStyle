@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StyleFile>
+  <Style name="CustomPulldownLabel" template="StandardGlueButtonMini" height="14" hjustify="Left" />
+</StyleFile>

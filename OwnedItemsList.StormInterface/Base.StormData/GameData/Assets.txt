@@ -1,0 +1,6 @@
+UI/Spazzo/Pulldown=_Assets\UI\spaz_ui_pulldown.dds
+UI/Spazzo/PulldownHover=_Assets\UI\spaz_ui_pulldown_hover.dds
+UI/Spazzo/PulldownPress=_Assets\UI\spaz_ui_pulldown_press.dds
+UI/Spazzo/PulldownMenu=_Assets\UI\spaz_ui_pulldown_menuborder.dds
+UI/Spazzo/PulldownMenuHover=_Assets\UI\spaz_ui_pulldown_menuborder_hover.dds
+UI/Spazzo/PulldownMenuPress=_Assets\UI\spaz_ui_pulldown_menuborder_press.dds
