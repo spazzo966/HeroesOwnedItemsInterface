@@ -196,7 +196,7 @@ void libSprt_gf_DEBUGIncrementAllQuests (int lp_player, int lp_count);
 fixed libSprt_gf_DebugGameTimeDelta ();
 void libSprt_gf_DEBUGTalentsRespec (int lp_player, int lp_tier);
 void libSprt_gf_DEBUGAddDynamicStacksofBehaviortoUnit (fixed lp_rate, string lp_behavior, int lp_player, unit lp_unit);
-text libSprt_gf_PlayerOwnedItems (int lp_player);
+void libSprt_gf_PlayerOwnedItems (int lp_player, int lp_button);
 
 // Trigger Declarations
 trigger libSprt_gt_IncludeSupport;

@@ -1916,7 +1916,7 @@ void libSprt_gf_DEBUGAddDynamicStacksofBehaviortoUnit (fixed lp_rate, string lp_
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/lib_Sprt_76BB2D86"));
 }
 
-text libSprt_gf_PlayerOwnedItems (int lp_player) {
+void libSprt_gf_PlayerOwnedItems (int lp_player, int lp_button) {
     string lv_exportString;
     text lv_exportText;
     int lv_numHeroes = CatalogFieldValueCount(c_gameCatalogConfig, "Config", "HeroArray", c_playerAny);
@@ -1937,7 +1937,15 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
     string lv_hero;
     string lv_skin;
     string lv_mount;
+    int lv_numOwned;
+    int lv_numNotOwned;
+    int lv_totalItems;
+    fixed lv_percentOwned;
     
+    lv_numOwned = 0;
+    lv_numNotOwned = 0;
+    lv_totalItems = 0;
+    lv_percentOwned = 0.0;
     lv_iterator = 1;
     // lv_exportString = PlayerHero(lp_player);
     // lv_exportString += " owns: ";
@@ -1948,9 +1956,11 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
         lv_exportString += lv_stringIteration;
         if ((PlayerHasReward(lp_player, (CatalogFieldValueGet(c_gameCatalogHero, lv_stringIteration, "RequiredRewardArray[0]", c_playerAny))) == true)) {
             lv_exportString += " 1";
+            lv_numOwned += 1;
         }
         else {
             lv_exportString += " 0";
+            lv_numNotOwned += 1;
         }
         lv_numBaseSkins = CatalogFieldValueCount(c_gameCatalogHero, lv_stringIteration, "VariationArray", c_playerAny);
         lv_subIterator = 1;
@@ -1958,9 +1968,11 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
             lv_stringIteration = CatalogFieldValueGet(c_gameCatalogHero, lv_hero, "VariationArray[" + IntToString((lv_subIterator - 1)) + "]", c_playerAny);
             if ((PlayerHasReward(lp_player, (CatalogFieldValueGet(c_gameCatalogSkin, lv_stringIteration, "RequiredRewardArray[0]", c_playerAny))) == true)) {
                 lv_exportString += "1";
+                lv_numOwned += 1;
             }
             else {
                 lv_exportString += "0";
+                lv_numNotOwned += 1;
             }
         }
         lv_numVoiceLines = CatalogFieldValueCount(c_gameCatalogHero, lv_hero, "VoiceLineArray", c_playerAny);
@@ -1970,9 +1982,11 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
             lv_stringIteration = CatalogFieldValueGet(c_gameCatalogHero, lv_hero, "VoiceLineArray[" + IntToString((lv_subIterator - 1)) + "]", c_playerAny);
             if ((PlayerHasReward(lp_player, (CatalogFieldValueGet(c_gameCatalogVoiceLine, lv_stringIteration, "RequiredRewardArray[0]", c_playerAny))) == true)) {
                 lv_exportString += "1";
+                lv_numOwned += 1;
             }
             else {
                 lv_exportString += "0";
+                lv_numNotOwned += 1;
             }
         }
         lv_numHeroMastery = CatalogFieldValueCount(c_gameCatalogHero, lv_hero, "HeroMasteryRingArray", c_playerAny);
@@ -1982,9 +1996,11 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
             lv_stringIteration = CatalogFieldValueGet(c_gameCatalogHero, lv_hero, "HeroMasteryRingArray[" + IntToString((lv_subIterator - 1)) + "]", c_playerAny);
             if ((PlayerHasReward(lp_player, (CatalogFieldValueGet(c_gameCatalogHeroMastery, lv_stringIteration, "RequiredRewardArray[0]", c_playerAny))) == true)) {
                 lv_exportString += "1";
+                lv_numOwned += 1;
             }
             else {
                 lv_exportString += "0";
+                lv_numNotOwned += 1;
             }
         }
         lv_numSkins = CatalogFieldValueCount(c_gameCatalogHero, lv_hero, "SkinArray", c_playerAny);
@@ -1996,9 +2012,11 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
             lv_exportString += lv_stringIteration;
             if ((PlayerHasReward(lp_player, (CatalogFieldValueGet(c_gameCatalogSkin, lv_stringIteration, "RequiredRewardArray[0]", c_playerAny))) == true)) {
                 lv_exportString += " 1";
+                lv_numOwned += 1;
             }
             else {
                 lv_exportString += " 0";
+                lv_numNotOwned += 1;
             }
             lv_numSkinVariations = CatalogFieldValueCount(c_gameCatalogSkin, lv_skin, "VariationArray", c_playerAny);
             lv_subSubSubIterator = 1;
@@ -2006,9 +2024,11 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
                 lv_stringIteration = CatalogFieldValueGet(c_gameCatalogSkin, lv_skin, "VariationArray[" + IntToString((lv_subSubSubIterator - 1)) + "]", c_playerAny);
                 if ((PlayerHasReward(lp_player, (CatalogFieldValueGet(c_gameCatalogSkin, lv_stringIteration, "RequiredRewardArray[0]", c_playerAny))) == true)) {
                     lv_exportString += "1";
+                    lv_numOwned += 1;
                 }
                 else {
                     lv_exportString += "0";
+                    lv_numNotOwned += 1;
                 }
             }
             if (lv_subSubIterator != lv_numSkins) {
@@ -2034,9 +2054,11 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
         lv_exportString += lv_stringIteration;
         if ((PlayerHasReward(lp_player, (CatalogFieldValueGet(c_gameCatalogMount, lv_stringIteration, "RequiredRewardArray[0]", c_playerAny))) == true)) {
             lv_exportString += " 1";
+            lv_numOwned += 1;
         }
         else {
             lv_exportString += " 0";
+            lv_numNotOwned += 1;
         }
         lv_numMountVariations = CatalogFieldValueCount(c_gameCatalogMount, lv_mount, "VariationArray", c_playerAny);
         lv_subIterator = 1;
@@ -2044,9 +2066,11 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
             lv_stringIteration = CatalogFieldValueGet(c_gameCatalogMount, lv_mount, "VariationArray[" + IntToString((lv_subIterator - 1)) + "]", c_playerAny);
             if ((PlayerHasReward(lp_player, (CatalogFieldValueGet(c_gameCatalogMount, lv_stringIteration, "RequiredRewardArray[0]", c_playerAny))) == true)) {
                 lv_exportString += "1";
+                lv_numOwned += 1;
             }
             else {
                 lv_exportString += "0";
+                lv_numNotOwned += 1;
             }
         }
         lv_exportString += "],";
@@ -2062,10 +2086,12 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
             if ((PlayerHasReward(lp_player, (CatalogFieldValueGet(c_gameCatalogSpray, lv_stringIteration, "RequiredRewardArray[0]", c_playerAny))) == true)) {
                 lv_exportString += lv_stringIteration;
                 lv_exportString += " 1";
+                lv_numOwned += 1;
             }
             else {
                 lv_exportString += lv_stringIteration;
                 lv_exportString += " 0";
+                lv_numNotOwned += 1;
             }
         }
         else if (StringContains(lv_stringIteration, "Banner,", c_stringAnywhere, c_stringNoCase) == true) {
@@ -2073,10 +2099,12 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
             if ((PlayerHasReward(lp_player, (CatalogFieldValueGet(c_gameCatalogBanner, lv_stringIteration, "RequiredRewardArray[0]", c_playerAny))) == true)) {
                 lv_exportString += lv_stringIteration;
                 lv_exportString += " 1";
+                lv_numOwned += 1;
             }
             else {
                 lv_exportString += lv_stringIteration;
                 lv_exportString += " 0";
+                lv_numNotOwned += 1;
             }
         }
         else if (StringContains(lv_stringIteration, "AnnouncerPack,", c_stringAnywhere, c_stringNoCase) == true) {
@@ -2084,10 +2112,12 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
             if ((PlayerHasReward(lp_player, (CatalogFieldValueGet(c_gameCatalogAnnouncerPack, lv_stringIteration, "RequiredRewardArray[0]", c_playerAny))) == true)) {
                 lv_exportString += lv_stringIteration;
                 lv_exportString += " 1";
+                lv_numOwned += 1;
             }
             else {
                 lv_exportString += lv_stringIteration;
                 lv_exportString += " 0";
+                lv_numNotOwned += 1;
             }
         }
         if (lv_iterator == (lv_numGameContent)) {
@@ -2106,10 +2136,12 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
         if ((PlayerHasReward(lp_player, (CatalogFieldValueGet(c_gameCatalogEmoticonPack, lv_stringIteration, "RequiredRewardArray[0]", c_playerAny))) == true)) {
             lv_exportString += lv_stringIteration;
             lv_exportString += " 1";
+            lv_numOwned += 1;
         }
         else {
             lv_exportString += lv_stringIteration;
             lv_exportString += " 0";
+            lv_numNotOwned += 1;
         }
         if (lv_iterator == (lv_numEmoticons)) {
             lv_exportString += "]";
@@ -2124,9 +2156,21 @@ text libSprt_gf_PlayerOwnedItems (int lp_player) {
 
     lv_exportText += StringToText("}");
     
-    return lv_exportText;
-  }
-  
+    lv_totalItems = (lv_numOwned + lv_numNotOwned);
+    // We're removing some because I'm aware of some unownable items, but it's likely higher than this
+    lv_numNotOwned -= 10;
+    // return lv_exportText;
+    // UIDisplayMessage(PlayerGroupAll(), c_messageAreaDebug, (StringToText("Total Items: ") + IntToText(lv_totalItems)));
+    // UIDisplayMessage(PlayerGroupAll(), c_messageAreaDebug, (StringToText("Owned Number of Items for Player ") + IntToText(lp_player) + StringToText(": ") + IntToText(lv_numOwned)));
+    // UIDisplayMessage(PlayerGroupAll(), c_messageAreaDebug, (StringToText("Unowned Number of Items for Player ") + IntToText(lp_player) + StringToText(": ") + IntToText(lv_numNotOwned)));
+    lv_percentOwned = ((IntToFixed(lv_numOwned) / IntToFixed(lv_totalItems)) * 100.0);
+    // UIDisplayMessage(PlayerGroupAll(), c_messageAreaDebug, (StringToText("Percent Owned ") + FixedToText(lv_percentOwned, 1)));
+    
+    libNtve_gf_SetDialogItemText(lp_button, (PlayerName(lp_player) + StringToText(": ") + FixedToText(lv_percentOwned, 1) + StringToText("%")), PlayerGroupAll());
+    libNtve_gf_SetDialogItemTooltip(lp_button, lv_exportText, PlayerGroupAll());
+    DialogControlSetVisible(lp_button, PlayerGroupAll(), true);
+
+}
 
 // Triggers
 //--------------------------------------------------------------------------------------------------
@@ -9809,35 +9853,25 @@ bool libSprt_gt_GPU2021EnableDisableExtendedDurationXPGlobes_Func (bool testCond
         CatalogFieldValueSet(c_gameCatalogEffect, "ExperienceGlobeApplyXPReductionCoolup", "Chance", autoF9F37F48_var, "1");
     }
     DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer\\FullscreenUpperContainer\\PlayerClipboard1");
-    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), libSprt_gf_PlayerOwnedItems(1), PlayerGroupAll());
-    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), true);
+    libSprt_gf_PlayerOwnedItems(1, DialogControlLastCreated());
     DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer\\FullscreenUpperContainer\\PlayerClipboard2");
-    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), libSprt_gf_PlayerOwnedItems(2), PlayerGroupAll());
-    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), true);
+    libSprt_gf_PlayerOwnedItems(2, DialogControlLastCreated());
     DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer\\FullscreenUpperContainer\\PlayerClipboard3");
-    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), libSprt_gf_PlayerOwnedItems(3), PlayerGroupAll());
-    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), true);
+    libSprt_gf_PlayerOwnedItems(3, DialogControlLastCreated());
     DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer\\FullscreenUpperContainer\\PlayerClipboard4");
-    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), libSprt_gf_PlayerOwnedItems(4), PlayerGroupAll());
-    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), true);
+    libSprt_gf_PlayerOwnedItems(4, DialogControlLastCreated());
     DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer\\FullscreenUpperContainer\\PlayerClipboard5");
-    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), libSprt_gf_PlayerOwnedItems(5), PlayerGroupAll());
-    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), true);
+    libSprt_gf_PlayerOwnedItems(5, DialogControlLastCreated());
     DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer\\FullscreenUpperContainer\\PlayerClipboard6");
-    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), libSprt_gf_PlayerOwnedItems(6), PlayerGroupAll());
-    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), true);
+    libSprt_gf_PlayerOwnedItems(6, DialogControlLastCreated());
     DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer\\FullscreenUpperContainer\\PlayerClipboard7");
-    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), libSprt_gf_PlayerOwnedItems(7), PlayerGroupAll());
-    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), true);
+    libSprt_gf_PlayerOwnedItems(7, DialogControlLastCreated());
     DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer\\FullscreenUpperContainer\\PlayerClipboard8");
-    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), libSprt_gf_PlayerOwnedItems(8), PlayerGroupAll());
-    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), true);
+    libSprt_gf_PlayerOwnedItems(8, DialogControlLastCreated());
     DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer\\FullscreenUpperContainer\\PlayerClipboard9");
-    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), libSprt_gf_PlayerOwnedItems(9), PlayerGroupAll());
-    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), true);
+    libSprt_gf_PlayerOwnedItems(9, DialogControlLastCreated());
     DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer\\FullscreenUpperContainer\\PlayerClipboard10");
-    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), libSprt_gf_PlayerOwnedItems(10), PlayerGroupAll());
-    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), true);
+    libSprt_gf_PlayerOwnedItems(10, DialogControlLastCreated());
     // UIDisplayMessage(PlayerGroupAll(), c_messageAreaDebug, StringToText("Entry 869  :"));
     // UIDisplayMessage(PlayerGroupAll(), c_messageAreaDebug, StringToText(CatalogFieldValueGet(c_gameCatalogConfig, "Config", "GameContentArray[869]", c_playerAny)));
     // UIDisplayMessage(PlayerGroupAll(), c_messageAreaDebug, StringToText(StringReplace(CatalogFieldValueGet(c_gameCatalogConfig, "Config", "GameContentArray[869]", c_playerAny), "", 0, 6)));

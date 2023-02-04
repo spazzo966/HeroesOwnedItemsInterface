@@ -9,7 +9,7 @@
       <Anchor side="Top" relative="$parent" pos="Min" offset="300"/>
       <Anchor side="Right" relative="$parent" pos="Max" offset="-30"/>
       <Height val="#ButtonHeight"/>
-      <Width val="120"/>
+      <Width val="180"/>
       <ClipboardText val="{$this/@Tooltip}"/>
       <Tooltip val="asdf" />
       <Frame type="Label" name="Label">
